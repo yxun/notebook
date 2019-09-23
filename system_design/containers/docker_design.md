@@ -1,5 +1,6 @@
 
 # Docker
+> Reference: https://www.aquasec.com/wiki/display/containers/Docker+Architecture
 
 ## Containers vs Virtual Machines
 
