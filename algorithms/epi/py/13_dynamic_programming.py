@@ -3,8 +3,6 @@
 DP is a general technique for solving optimization, search, and counting problems that can be decomposed into subproblems.
 Like divide-and-conquer, DP solves the problem by combining the solutions of multiple smaller problems, but what makes DP different is that the same subproblem may reoccur.
 Therefore, a key to making DP efficient is caching the results of intermediate computations.
-
-
 '''
 
 

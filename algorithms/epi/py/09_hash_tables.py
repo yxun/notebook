@@ -134,3 +134,35 @@ def is_letter_constructible_from_magazine_pythonic(letter_text, magazine_text):
     
 
 #%%
+"""
+### Trie
+Solve the problem of representing a set of words.
+
+A trie is a tree-like data structure whose nodes store the letters of an alphabet. By structuring the nodes in a particular way, words and strings can be retrieved from the structure by traversing down a branch path of the tree.
+Each trie has an empty root node (an empty string ""), with links (or references) to other nodes, one for each possible alphabetic value.
+If we are representing the English alphabet, the total number of child nodes will be 26. Every single node has 26 references to possible child nodes.
+The size of a trie is directly correlated to the size of all the possible values that the trie could represent.
+A single node in a trie contains two things: 1. A value. 2. An array of references to child nodes.
+All the descendants of a node have a common prefix of the string associated with that node, and the root is associated with the empty string.
+"""
+
+#%%
+class Node:
+    def __init__(self):
+        self.children = {}      # Dict[str, Node]
+        self.value = None
+
+    def find(node: Node, key: str):
+        for char in key:
+            if char in node.children:
+                node = node.children[char]
+            else:
+                return None
+        return node.value
+
+    def insert(node: Node, key: str, value):
+        for char in key:
+            if char not in node.children:
+                node.children[char] = Node()
+            node = node.children[char]
+        node.value = value

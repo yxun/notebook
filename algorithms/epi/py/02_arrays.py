@@ -84,9 +84,14 @@ nums = [2,6,8,5,1,4,9,3,7]
 print(quick_sort(nums))
 
 #%%
-# Dutch Flag Partition
+# Dutch Flag Partition 
 # Save space complexity sacrifice time complexity
 # space complexity O(1), time complexity O(n^2)
+"""
+Write a program that takes an array A and an index i into A, and rearranges the elements such that
+all elements less than A[i] (the 'pivot') appear first, followed by elements equal to the pivot,
+followed by elements greater than the pivot.
+"""
 
 RED, WHITE, BLUE = range(3)
 
