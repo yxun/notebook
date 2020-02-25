@@ -70,7 +70,7 @@ def search_student(students, target, comp_gpa):
 '''
 ### Know searching libraries
 The bisect module provides binary search functions for sorted list.
-- bisect.bisect_left(a, x): To find the firt element that is not less than a targetd value x.
+- bisect.bisect_left(a, x): To find the first element that is greater than or equal to a target value x.
 This call returns the index of the first entry that is greater than or equal to the targeted value.
 - bisect.bisect_right(a, x): To find the first element that is greater than a targeted value x.
 This call returns the index of the first entry that is greater than the targeted value x. 

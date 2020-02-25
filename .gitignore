@@ -105,3 +105,9 @@ venv.bak/
 
 # vscode
 .vscode
+
+# macos
+.DS_Store
+
+# Java
+*.class
