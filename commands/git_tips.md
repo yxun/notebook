@@ -45,5 +45,12 @@ $ git reflog
 # find the first action before rebase
 $ git reset HEAD@{}  --hard
 
+# avoid git pull problems, git pull == git fetch; git merge
+# create an alias git up
+$ git config --global alias.up '!git remote update -p; git merge --ff-only @{u}'
+$ git up
+# This alias downloads all of the latest commits from all upstream branches
+#  (pruning the dead branches) and
+#  tries to fast-forward the local branch to the latest commit on the upstream branch
 
 ```
