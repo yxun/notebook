@@ -1,4 +1,4 @@
-import java.io.WriteAbortedException;
+package creational.builder.hero;
 
 /**
  * Imagine a character generator for a role playing game. 
@@ -68,10 +68,17 @@ public final class Hero {
     }
 
     public static void main(String[] args) {
-        var mage = new Hero.Builder(Profession.MAGE, "Riobard")
+        Hero mage = new Hero.Builder(Profession.MAGE, "Riobard")
             .withHairColor(HairColor.BLACK)
             .withWeapon(Weapon.DAGGER)
             .build();
+
+        System.out.println(mage.profession);
+        System.out.println(mage.name);
+        System.out.println(mage.hairType);
+        System.out.println(mage.hairColor);
+        System.out.println(mage.armor);
+        System.out.println(mage.weapon);
     }
 
 
