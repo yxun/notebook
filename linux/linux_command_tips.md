@@ -98,12 +98,41 @@ $ opensll s_client -connect https://example.com:443 -CAfile /etc/ssl/certs/ca-ce
 # check port opening
 $ nc -v [dest host] [port]
 
+# check if port is in use in locally
+$ sudo lsof -i -P -n | grep LISTEN
+$ sudo netstat -tulpn | grep LISTEN
+$ sudo lsof -i:22  ## see a specific port such as 22
+$ sudo ss -tulw
+
+# MacOS X
+$ netstat -anp tcp | grep LISTEN
+$ netstat -anp udp | grep LISTEN
+
+# Windows
+$ netstat -bano | grep LISTENING
+
 # how to move all files except one
 $ shopt -s extglob
 $ mv !(fileone) <~/path/newFolder>
 
 # how to lock a file
 $ chattr +i file
+
+# how to get the MAC address of the network interfaces
+$ ip link
+# or
+$ ifconfig -a
+
+# how to check product_uuid
+$ sudo cat /sys/class/dmi/id/product_uuid
+
+# how to view linux kernel parameters for currently booted system
+sudo sysctl -a | grep 'something'
+# or
+cat /proc/cmdline
+# or
+dmesg | grep "command line"
+
 
 ```
 

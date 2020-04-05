@@ -48,5 +48,7 @@ $ docker volume ls -qf dangling=true | xargs -r docker volume rm
 # or 
 $ docker system prune
 
+# Tell SELinux it is ok to allow systemd to manipulate its Cgroups configuration
+# setsebool -P container_manage_cgroup true
 
 ```
