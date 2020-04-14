@@ -53,4 +53,9 @@ $ git up
 #  (pruning the dead branches) and
 #  tries to fast-forward the local branch to the latest commit on the upstream branch
 
+# avoid git pull, a better approach is e.g. git fetch; git rebase origin/master
+# or git pull --rebase
+
+# avoid fast-forward git merge, use git merge --no-ff to keep a history of a feature branch
+
 ```
