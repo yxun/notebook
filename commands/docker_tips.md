@@ -51,4 +51,7 @@ $ docker system prune
 # Tell SELinux it is ok to allow systemd to manipulate its Cgroups configuration
 # setsebool -P container_manage_cgroup true
 
+# extract docker image SHA from inspect
+$ docker inspect [repo]/[image_name]:[tag] | jq '.[0].RepoDigests[0]'
+
 ```
