@@ -1,22 +1,17 @@
 # Notebook
-This is my notebook for collecting notes from learning and collections.
+
+[![](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](https://github.com/yxun/notebook/blob/master/LICENSE)
+![](https://img.shields.io/github/repo-size/yxun/notebook.svg?style=flat)
 
 ## Index
 
-* [General tools and commands notes](https://github.com/yxun/notebook/tree/master/commands)
-  * [Docker](https://github.com/yxun/notebook/blob/master/commands/docker_tips.md)
-  * [Git](https://github.com/yxun/notebook/blob/master/commands/git_tips.md)
-  * [Linux utilities](https://github.com/yxun/notebook/blob/master/commands/linux_command_tips.md)
-  * [Markdown Tips](https://github.com/yxun/notebook/blob/master/commands/markdown.md)
-  * [Vim tips](https://github.com/yxun/notebook/blob/master/commands/vim_tips.md)
+* [CLI](https://github.com/yxun/notebook/blob/master/cli) - git, markdown and vim tips
+* [Containers](https://github.com/yxun/notebook/blob/master/containers) - Docker tips and kubernets introdution
+* [Java](https://github.com/yxun/notebook/blob/master/java) - Java examples and exercises
+* [Linux](https://github.com/yxun/notebook/blob/master/linux) - Linux notes and bash tips
+* [Python](https://github.com/yxun/notebook/blob/master/python) - Python notes, examples and exercises
+* [Old book notes](https://github.com/yxun/notebook/tree/master/old_books) - Ansible, docker and kubernetes notes
 
-* [Data Structures and Algorithms](https://github.com/yxun/notebook/tree/master/algorithms)
-  * [EPI](https://github.com/yxun/notebook/tree/master/algorithms/epi)
+## License
 
-* [Linux concepts and questions](https://github.com/yxun/notebook/blob/master/linux/linux_notes.md)
-
-* [Old book notes](https://github.com/yxun/notebook/tree/master/old_books)
-  * [Ansible](https://github.com/yxun/notebook/blob/master/old_books/ansible_up_and_running.md)
-  * [Docker](https://github.com/yxun/notebook/blob/master/old_books/dockerbook.md)
-  * [Kubernetes](https://github.com/yxun/notebook/blob/master/old_books/kubernetes_up_and_running.md)
-
+[Notebook](https://github.com/yxun/notebook) is [Apache 2.0 licensed](https://github.com/yxun/notebook/blob/master/LICENSE)
