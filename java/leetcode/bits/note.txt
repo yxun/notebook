@@ -1,0 +1,46 @@
+
+## unary operation
+
+x ^ 0s = x      x & 0s = 0      x | 0s = x
+x ^ 1s = ~x     x & 1s = x      x | 1s = 1s
+x ^ x = 0       x & x = x       x | x = x
+
+
+remove same numbers from three numbers: 1^1^2 = 2
+
+num & mask:
+01011011 &
+00111100
+---------
+00011000
+
+n & (n-1) drop least significant bit:
+01011011 &
+01011010
+---------
+01011010
+
+n & (-n) find lsb 1, -n = ~n + 1
+10110100 &
+01001100
+---------
+00000100
+
+
+## Shift
+arithmetic right shift >> 
+unsign shift >>> , left fill 0
+arithmetic left shift <<
+
+
+## mask
+1s mask = ~0
+ith 1 mask, 1 << (i-1)
+first to ith 1s mask, (1 << i) - 1
+first to ith 0s mask, ~((1 << i) - 1) 
+
+
+## Java
+static int Integer.bitCount();          // count number of 1s
+static int Integer.highestOneBit();     // highest 1 bit
+static String toBinaryString(int i);    // to binary string
