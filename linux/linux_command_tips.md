@@ -127,12 +127,14 @@ $ ifconfig -a
 $ sudo cat /sys/class/dmi/id/product_uuid
 
 # how to view linux kernel parameters for currently booted system
-sudo sysctl -a | grep 'something'
+$ sudo sysctl -a | grep 'something'
 # or
-cat /proc/cmdline
+$ cat /proc/cmdline
 # or
-dmesg | grep "command line"
+$ dmesg | grep "command line"
 
+# how to terminate dropped ssh sessions
+$ pkill -o -u YOURUSERNAME sshd
 
 ```
 
