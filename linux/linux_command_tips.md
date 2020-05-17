@@ -136,5 +136,10 @@ $ dmesg | grep "command line"
 # how to terminate dropped ssh sessions
 $ pkill -o -u YOURUSERNAME sshd
 
+# how to command for each file in a folder
+$ for f in ./*.doc; do
+    # do something with "$f"
+done
+
 ```
 
