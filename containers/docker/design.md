@@ -4,7 +4,7 @@
 
 ## Containers vs Virtual Machines
 
-![](./img/Container_VM_Implementation.png)
+![](../img/Container_VM_Implementation.png)
 
 Docker moves up the abstraction of resources from the hardware level to the Operating System level which results in much faster and more lightweight instances.
 
@@ -25,12 +25,12 @@ Develop, assemble, ship and run applications using the following components:
 - Docker Engine REST API: An API used by applications to interact with the Docker daemon; it can be accessed by an HTTP client.
 - Docker CLI: A command line interface client for interacting with the Docker daemon. It greatly simplifies how you manage container instances.
 
-![](./img/Docker_Engine.png)
+![](../img/Docker_Engine.png)
 
 
 ## Docker Architecture
 
-![](./img/Docker_Architecture.png)
+![](../img/Docker_Architecture.png)
 
 ### Docker Objects
 

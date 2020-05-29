@@ -7,11 +7,11 @@ Each node runs a container runtime, such as Docker or rkt, along with an agent t
 The node also runs additional components for logging, monitoring, service discovery and optional add-ones.
 > Reference: https://thenewstack.io/kubernetes-an-overview/
 
-![](./img/Chart_02_Kubernetes-Architecture.png)
+![](../img/Chart_02_Kubernetes-Architecture.png)
 
-![](./img/Chart_03_Kubernetes-Master.png)
+![](../img/Chart_03_Kubernetes-Master.png)
 
-![](./img/Chart_04_Kubernetes-Node.png)
+![](../img/Chart_04_Kubernetes-Node.png)
 
 ### Pods
 A pod is a collection of one or more containers. Pods act as the logical boundary for containers sharing the same context and resources.
