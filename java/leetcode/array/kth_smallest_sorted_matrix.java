@@ -18,7 +18,7 @@ return 13.
 
 import java.util.PriorityQueue;
 
-public class keth_smallest_sorted_matrix {
+public class kth_smallest_sorted_matrix {
 
     // binary search
     public int kthSmallest_bs(int[][] matrix, int k) {
