@@ -145,4 +145,11 @@ func methodsInterfaces() {
 	m := image.NewRGBA(image.Rect(0, 0, 100, 100))
 	fmt.Println(m.Bounds())
 	fmt.Println(m.At(0, 0).RGBA())
+
+	// type assertions
+	var j interface{} = "hello"
+	s, ok := j.(string)
+	fmt.Println(s)
+	f, ok := j.(float64)
+	fmt.Println(f, ok)
 }

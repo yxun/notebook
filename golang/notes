@@ -1,0 +1,153 @@
+# Use a := make([]T, 0) with a = append(a, b)
+If allocate a := make([]T, N), the slice will include all zero value elements.
+Do not Use a := make([]T, N) with a = append(a, b) if zero value elements are not expected in an array.
+
+# Use copy(dst, src) with append(slice, other_slice)
+slice is not immutable. When the slice is shared, copy it before appending it to a result.
+e.g. temp []T
+combo := make([]T, len(temp))
+copy(combo, temp)
+result = append(result, combo) 
+
+# combine two []byte slices, use ...
+temp []byte
+part []byte
+temp = append(temp, part...)
+
+# There is no Math.Max nor Math.Min. Implement them by yourself
+# There is no Set. Use map[key]bool to represent a Set
+# There is no ternary operator. Use if else instead
+# ++, -- short hand cannot be used in slice index
+# slice literal can initialize 2D array. e.g. [][]int{{1,2,3}, {2,3,4}}
+
+# import "container/heap" , need to implement five interfaces before using heap.Init , heap.Push, heap.Pop
+e.g.
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x interface{})
+func (h *IntHeap) Pop() interface{}
+
+# stack
+stack := make([]int, 0)
+stack = append(stack, 10)
+v := stack[len(stack)-1]
+stack = stack[:len(stack)-1]
+# check stack empty
+len(stack) == 0
+
+# queue
+queue := make([]int, 0)
+queue = append(queue, 10)
+v := queue[0]
+queue = queue[1:]
+len(queue) == 0
+
+# dictionary
+m := make(map[string]int)
+m["hello"] = 1
+delete(m, "hello")
+for k, v := range m {
+    println(k, v)
+}
+
+# sort
+sort.Ints([]int{})
+sort.Strings([]string{})
+sort.Slice(s, func(i, j int)bool{return s[i] < s[j]})
+
+## sort string
+type sortRunes []rune
+
+func (s sortRunes) Len() int {
+    return len(s)
+}
+
+func (s sortRunes) Less(i, j int) bool {
+    return s[i] < s[j]
+}
+
+func (s sortRunes) Swap(i, j int) {
+    s[i], s[j] = s[j], s[i]
+}
+
+func SortString(s string) string {
+    r := []rune(s)
+    sort.Sort(sortRunes(r))
+    return string(r)
+}
+
+
+# math
+math.MaxInt32
+math.MinInt32
+math.MaxInt64
+math.MinInt64
+
+# copy
+# delete a[i]
+copy(a[i:], a[i+1:])
+a = a[:len(a)-1]
+
+// make allocate length , use index assignment
+// make allocate 0 length, use append to add elements
+a := make([]int, n)
+a[n] = x
+a := make([]int, 0)
+a = append(a, x)
+
+# type convert
+# byte and int
+s = "123"   // s[0] type is byte
+num := int(s[0] - '0')   // 1
+str := string(s[0])  // "1"
+b := byte(num + '0')   // '1'
+fmt.Printf("%d%s%c\n", num, str, b)
+
+# string and int
+num, _ := strconv.Atoi(str)
+str, _ := strconv.Itoa(num)
+
+# revert string
+func reverse(s string) string {
+    rns := []rune(s)  // convert to rune
+    for i, j := 0, len(rns)-1; i < j; i, j = i+1. j-1 {
+        rns[i], rns[j] = rns[j], rns[i]
+    }
+    return string(rns)
+}
+
+# fib.go Fibonacci closure returns a function func() int
+func fib() func() int {
+    a, b := 0, 1
+    return func() int {
+        a, b = b, a+b
+        return a
+    }
+}
+
+func main() {
+    f := fib()
+    // Function calls are evaluated left-to-right
+    fmt.Println(f(), f(), f(), f())
+}
+
+
+# how to insert a value into existing slice
+// 0 <= index <= len(a)
+func insert(a []int, index int, value int) []int {
+    if len(a) == index { // nil or empty slice or after last element
+        return append(a, value)
+    }
+    a = append(a[:index+1], a[index:]...) // index < len(a)
+    a[index] = value
+    return a
+}
+
+or if index < len(a)
+
+copy(a[index+1:], a[index:])
+a[index] = value

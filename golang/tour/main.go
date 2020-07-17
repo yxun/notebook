@@ -5,4 +5,6 @@ func main() {
 	controlFlow()
 	moreTypes()
 	methodsInterfaces()
+	concurrency()
+	mutexCounter()
 }

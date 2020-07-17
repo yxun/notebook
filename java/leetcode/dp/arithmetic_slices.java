@@ -42,7 +42,7 @@ public class arithmetic_slices {
         }
         int total = 0;
         for (int cnt : dp) {
-            total += cnt;;
+            total += cnt;
         }
         return total;
     }
