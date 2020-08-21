@@ -141,5 +141,10 @@ $ for f in ./*.doc; do
     # do something with "$f"
 done
 
+# alternative to netstat -s
+https://unix.stackexchange.com/questions/258711/alternative-to-netstat-s
+e.g.
+$ awk '{for(i=1;i<=NF;i++)title[i] = $i; getline; print title[1]; for(i=2;i<=NF;i++)printf " %s: %s\n", title[i], $i }' /proc/net/netstat | grep DelayedACKLost
+
 ```
 

@@ -4,10 +4,10 @@ Do not Use a := make([]T, N) with a = append(a, b) if zero value elements are no
 
 # Use copy(dst, src) with append(slice, other_slice)
 slice is not immutable. When the slice is shared, copy it before appending it to a result.
-e.g. temp []T
-combo := make([]T, len(temp))
-copy(combo, temp)
-result = append(result, combo) 
+e.g. list []T
+temp := make([]T, len(list))
+copy(temp, list)
+result = append(result, temp)
 
 # combine two []byte slices, use ...
 temp []byte
@@ -20,7 +20,7 @@ temp = append(temp, part...)
 # ++, -- short hand cannot be used in slice index
 # slice literal can initialize 2D array. e.g. [][]int{{1,2,3}, {2,3,4}}
 
-# import "container/heap" , need to implement five interfaces before using heap.Init , heap.Push, heap.Pop
+# import "container/heap" , need to implement five methods before using heap.Init , heap.Push, heap.Pop
 e.g.
 type IntHeap []int
 
@@ -113,7 +113,7 @@ str, _ := strconv.Itoa(num)
 
 # revert string
 func reverse(s string) string {
-    rns := []rune(s)  // convert to rune
+    rns := []rune(s)  // convert to rune array
     for i, j := 0, len(rns)-1; i < j; i, j = i+1. j-1 {
         rns[i], rns[j] = rns[j], rns[i]
     }
@@ -137,17 +137,24 @@ func main() {
 
 
 # how to insert a value into existing slice
-// 0 <= index <= len(a)
-func insert(a []int, index int, value int) []int {
-    if len(a) == index { // nil or empty slice or after last element
-        return append(a, value)
-    }
-    a = append(a[:index+1], a[index:]...) // index < len(a)
-    a[index] = value
-    return a
-}
-
-or if index < len(a)
-
+# if index < len(a)
 copy(a[index+1:], a[index:])
 a[index] = value
+
+
+# golang map key is not sorted.
+# everytimte for k, v := range map , will iterate random key in the map
+
+# in order to iterate keys of map in order, put all keys into a slice and sort the slice,
+# and then range the keys slice instead of the map
+
+m := map[int]int{0: 1, 1: 1, 2: 1}
+keys := make([]int, 0, len(m))
+for k := range m {
+    keys = append(keys, k)
+}
+sort.Ints(keys)
+
+for _, k := range keys {
+    fmt.Println(k, m[k])
+}
