@@ -2,7 +2,7 @@ package arrays
 
 // 240. Search a 2D Matrix II
 
-func searchMatrix(matrix [][]int, target int) bool {
+func searchMatrix2(matrix [][]int, target int) bool {
 	if matrix == nil || len(matrix) == 0 || len(matrix[0]) == 0 {
 		return false
 	}

@@ -146,5 +146,36 @@ https://unix.stackexchange.com/questions/258711/alternative-to-netstat-s
 e.g.
 $ awk '{for(i=1;i<=NF;i++)title[i] = $i; getline; print title[1]; for(i=2;i<=NF;i++)printf " %s: %s\n", title[i], $i }' /proc/net/netstat | grep DelayedACKLost
 
+# mount external USB disk drive
+
+## check commands
+## check device name
+$ lsblk --fs
+$ sudo fdisk -l
+## check disk mount
+$ df -h
+## check dmesg log
+$ dmesg | grep <device name>
+## check mount
+$ findmnt
+
+## create directory
+$ sudo mkdir /media/<directory name>
+## mount disk
+$ sudo mount -t <fs type, e.g. hfsplus> <device name, e.g. /dev/sda1> /media/<directory name>
+
+## unmount
+$ sudo umount /media/<directory name>
+
+## eject device
+$ sudo eject /dev/sda
+
+
+# identify users who own a directory
+$ df -h
+$ id -a 42
+# http://ngelinux.com/what-is-the-meaning-and-impact-of-run-user-0-and-run-user-1000-directories-in-linuxfedora/
+
+
 ```
 

@@ -2,7 +2,7 @@ package greedy
 
 // 605. Can Place Flowers
 
-func cnaPlaceFlowers(flowerbed []int, n int) bool {
+func canPlaceFlowers(flowerbed []int, n int) bool {
 	cnt := 0
 	pre, next := 0, 0
 	for i := 0; i < len(flowerbed) && cnt < n; i++ {
