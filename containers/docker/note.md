@@ -54,4 +54,12 @@ $ docker system prune
 # extract docker image SHA from inspect
 $ docker inspect [repo]/[image_name]:[tag] | jq '.[0].RepoDigests[0]'
 
+# macos stop docker desktop and disable vmnetd
+$ ps aux | grep docker
+$ netstat -an | grep vmnet
+$ launchctl list | grep -i docker
+$ sudo launchctl disable system/com.docker.vmnetd
+$ sudo rm -f /Library/LaunchDaemons/com.docker.vmnetd.plist
+$ sudo rm -f /Library/PrivilegedHelperTools/com.docker.vmnetd
+
 ```

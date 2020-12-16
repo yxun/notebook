@@ -432,3 +432,288 @@ when two objects are equivalent, their hash values are same. However, when two o
 
 When override equals() method, user should also override hashCode() method. And make sure two equivalent objects have same hash value.
 
+HashSet and HashMap classes uses hashCode() method to calculate a location. When we implement those classes, we need to implement the hashCode() method.
+
+Hash function generally uses R value 31. There will be compiler optimization when multiplying 31 : 31 * x == (x << 5) - x
+
+```java
+@Override
+public int hashCode() {
+    int result = 17;
+    result = 31 * result + x;
+    result = 31 * result + y;
+    result = 31 * result + z;
+    return result;
+}
+```
+
+### toString()
+
+### clone()
+
+#### cloneable
+
+clone() is a protected method of Object. If a class doesn't override clone(), other classes cannot call its clone() method.
+
+If a class doesn't implement Cloneable interface and calls its clonse() method, it will throw a CloneNotSupportedException
+
+```java
+public class CloneExample implements Cloneable {
+    private int a;
+    private int b;
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+```
+
+#### shallow clone
+
+The copy and original objects are referenced with the same object.
+
+```java
+public class ShallowCloneExample implements Cloneable {
+    private int[] arr;
+
+    public ShallowCloneExample() {
+        arr = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i;
+        }
+    }
+
+    public void set(int index, int value) {
+        arr[index] = value;
+    }
+
+    public int get(int index) {
+        return arr[index];
+    }
+
+    @Override
+    protected ShallowCloneExample clone() throws CloneNotSupportedException {
+        return (ShallowCloneExample) super.clone();
+    }
+}
+
+ShallowCloneExample e1 = new ShallowCloneExample();
+SHallowCloneExample e2 = null;
+
+try {
+    e2 = e1.clone();
+} catch (CloneSupportedException e) {
+    e.printStackTrace();
+}
+e1.set(2, 222);
+System.out.println(e2.get(2));  // 222
+```
+
+#### deep clone
+
+The copy and original objects are referenced with the different objects.
+
+```java
+public class DeepCloneExample implements Cloneable {
+    private int[] arr;
+
+    public DeepCloneExample() {
+        arr = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i;
+        }
+    }
+
+    public void set(int index, int value) {
+        arr[index] = value;
+    }
+
+    public int get(int index) {
+        return arr[index];
+    }
+
+    @Override
+    protected DeepCloneExample clone() throws CloneNotSupportedException {
+        DeepCloneExample result = (DeepCloneExample) super.clone();
+        result.arr = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            result.arr[i] = arr[i];
+        }
+        return result;
+    }
+}
+
+DeepCloneExample e1 = new DeepCloneExample();
+DeepCloneExample e2 = null;
+try {
+    e2 = e1.clone();
+} catch (CloneNotSupportedException e) {
+    e.printStackTrace();
+}
+e1.set(2, 222);
+System.out.println(e2.get(2));  // 2
+```
+
+#### Alternative way of copy
+
+"Effective Java" suggests using a copy of constructor or a copy of factory instead of using the clone() method directly.
+
+```java
+public class CloneConstructorExample {
+    private int[] arr;
+
+    public CloneConstructorExample() {
+        arr = new int[10];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = i;
+        }
+    }
+
+    public CloneConstructorExample(CloneConstructorExample original) {
+        arr = new int[original.arr.length];
+        for (int i = 0; i < original.arr.length; i++) {
+            arr[i] = original.arr[i];
+        }
+    }
+
+    public void set(int index, int value) {
+        arr[index] = value;
+    }
+
+    public int get(int index) {
+        return arr[index];
+    }
+}
+
+CloneConstructorExample e1 = new CloneConstructorExample();
+CloneConstructorExample e2 = new CloneConstructorExample(e1);
+e1.set(2, 222);
+System.out.println(e2.get(2));  // 2
+```
+
+## Inheritance
+
+### Access control
+
+Three keywords: private, protected and public. If there is access modifier, the resource is package scope accessible.
+
+A good design hides all implementation details. Modules communicate each other via APIs. Encapsulation.
+
+If a child class overrides a parent method, the child method should allow access for those who can access the parent one.
+
+String field should not be public. We should use getter and setter method with private String field.
+
+### Abstract class and interface
+
+If a class includes an abstract method, it must be declared as an abstract class.
+An abstract class cannot be instantiated. It can only be inherited.
+
+Interface members (fields and methods) are public by default. Interface methods are static and final by default.
+
+- Abstract class provides a IS-A relationship and interface provides a LIKE-A relationship.
+- A class can implement multiple interfaces but cannot inherit multiple abstract classes.
+- Interface fields can only be static and final.
+- Interface members can only be public.
+
+when to use interface:
+- Different classes need to implement a common method. e.g. the compareTo() method in the Comparable interface
+- Need multiple inheritances
+
+when to use abstract class:
+- Need to share codes between related classes
+- Need to control access between child class and parent class
+- Need to inherit non static and non final fields
+
+### super
+
+- visit parent constructor
+- visit parent member methods
+
+### Override and Overload
+
+#### Override
+
+Inheritance, a child class implements a method which has the same declaration in the parent class.
+
+- child method access privilege >= parent method
+- child method return type must be same as the parent one or be the child of the parent method return type
+- child method throws exception must be same as the parent one or be the child of the parent method exception
+
+Use @Override decorator, compiler can help check above three requirements.
+
+Method call order:
+- this.func(this)
+- super.func(this)
+- this.func(super)
+- super.func(super)
+
+example
+
+```java
+class A {
+    public void show(A obj) {
+        System.out.println("A.show(A)");
+    }
+
+    public void show(C obj) {
+        System.out.println("A.show(C)");
+    }
+}
+
+class B extends A {
+    @Override
+    public void show(A obj) {
+        System.out.println("B.show(A)");
+    }
+}
+
+class C extends B {}
+
+class D extends C {}
+
+public static void main(String[] args) {
+    A a = new A();
+    B b = new B();
+    C c = new C();
+    D d = new D();
+
+    a.show(a);  // A.show(A)
+    a.show(b);  // A.show(A)
+    b.show(c);  // A.show(C)
+    b.show(d);  // A.show(C)
+
+    A ba = new B();
+    ba.show(c);  // A.show(C)
+    ba.show(d);  // A.show(C)
+}
+```
+
+#### Overload
+
+In the same class, a method is delcared using an existing method name with different signatures.
+Same signature and different return types is not an overload method.
+
+## Reflection
+
+Every class has a Class object. When we compile a new class, it generates a .class file. That file stores the Class object. The object will be loaded into JVM in the initial use of the class. Or we can e.g. `Class.forName("com.mysql.jdbc.Driver")` to load a Class object. That method will return a Class object.
+Reflection can provide class information in runtime and can load a class even without the .class file.
+
+java.lang.reflect includes three classes:
+- Field: get() and set()
+- Method: invoke()
+- Constructor: newInstance()
+
+Three concerns using Reflection:
+- Performance
+- Safety
+- Encapsulation
+
+## Exception
+
+Object <-- Throwable <-- Error, Exception
+
+## Generic
+
+## Anotation
+
