@@ -1,4 +1,4 @@
-package examples.noninstantiability;
+package createObjects.noninstantiability;
 
 // Noninstantiable utility class
 public class UtilityClass {

@@ -1,4 +1,4 @@
-package examples.singleton.staticfactory;
+package createObjects.singleton.staticfactory;
 
 // Singleton with static factory
 public class Elvis {

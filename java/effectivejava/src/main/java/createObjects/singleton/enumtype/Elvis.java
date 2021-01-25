@@ -1,4 +1,4 @@
-package examples.singleton.enumtype;
+package createObjects.singleton.enumtype;
 
 // Enum singleton
 public enum Elvis {

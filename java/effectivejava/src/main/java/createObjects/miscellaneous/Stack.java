@@ -1,4 +1,4 @@
-package examples.miscellaneous;
+package createObjects.miscellaneous;
 
 import java.util.Arrays;
 import java.util.EmptyStackException;

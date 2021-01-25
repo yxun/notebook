@@ -1,7 +1,7 @@
-package examples.hierarchicalbuilder;
+package createObjects.hierarchicalbuilder;
 
-import static examples.hierarchicalbuilder.Pizza.Topping.*;
-import static examples.hierarchicalbuilder.NyPizza.Size.*;
+import static createObjects.hierarchicalbuilder.NyPizza.Size.*;
+import static createObjects.hierarchicalbuilder.Pizza.Topping.*;
 
 // Using the hierarchical builder
 public class PizzaTest {

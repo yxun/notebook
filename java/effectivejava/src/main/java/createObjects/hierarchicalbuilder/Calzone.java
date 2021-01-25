@@ -1,4 +1,4 @@
-package examples.hierarchicalbuilder;
+package createObjects.hierarchicalbuilder;
 
 // Subclass with hierarchical builder
 public class Calzone extends Pizza {

@@ -1,4 +1,4 @@
-package examples.singleton.field;
+package createObjects.singleton.field;
 
 // Singleton with public final field
 public class Elvis {
