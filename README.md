@@ -11,7 +11,7 @@
 * [Java](https://github.com/yxun/notebook/blob/master/java) - Java examples and exercises
 * [Linux](https://github.com/yxun/notebook/blob/master/linux) - Linux notes and bash tips
 * [Python](https://github.com/yxun/notebook/blob/master/python) - Python notes, examples and exercises
-* [Old book notes](https://github.com/yxun/notebook/tree/master/old_books) - Ansible, docker and kubernetes notes
+* [Old book notes](https://github.com/yxun/notebook/tree/master/old) - Ansible, docker and kubernetes notes
 
 ## License
 

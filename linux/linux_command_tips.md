@@ -104,6 +104,9 @@ $ sudo netstat -tulpn | grep LISTEN
 $ sudo lsof -i:22  ## see a specific port such as 22
 $ sudo ss -tulw
 
+# check how many ip connect
+$ netstat -atn | awk '{print $5}' | awk '{print $1}' | sort -nr | uniq -c
+
 # MacOS X
 $ netstat -anp tcp | grep LISTEN
 $ netstat -anp udp | grep LISTEN
