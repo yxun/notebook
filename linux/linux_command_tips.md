@@ -179,6 +179,21 @@ $ df -h
 $ id -a 42
 # http://ngelinux.com/what-is-the-meaning-and-impact-of-run-user-0-and-run-user-1000-directories-in-linuxfedora/
 
+# clean up a file
+$ cat /dev/null > messages
+$ : > messages
+# same effect. However, : > does not fork a new process
+
+# provide a placehodler
+$ : ${username=`whoami`}
+
+# Brace expansion
+$ base64_charset=( {A..Z} {a..z} {0..9} + / = )
+# Initializing an array, using extended brace expansion
+
+# clean journal logs
+$ journalctl --disk-usage
+$ sudo journalctl --vacuum-size=500M
 
 ```
 
